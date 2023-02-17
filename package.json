@@ -12,6 +12,7 @@
   "private": false,
   "scripts": {
     "dev": "vite",
+    "dev-network": "vite --host",
     "build": "run-p build:components build:types",
     "build:components": "vite build",
     "build:types": "vue-tsc --project tsconfig.build-types.json --declaration --emitDeclarationOnly --outDir dist/types ",
