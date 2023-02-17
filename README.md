@@ -47,12 +47,14 @@ To have some contribution guidance, please have a look at [CONTRIBUTING.md](CONT
 
 ## Inspired by
 
-Quagga related things:
+quagga2/quaggaJS related projects:
 
+- [quagga2](https://github.com/ericblade/quagga2) (active fork of quaggaJS)
+- [quaggaJS](https://github.com/serratus/quaggaJS) (seems to be no longer maintained)
 - [sin-tanaka/vue-quagga](https://github.com/sin-tanaka/vue-quagga)
 - <https://codesandbox.io/s/hidden-star-361gx>
 
-Project setup:
+General project setup:
 
 - [Create a Vue 3 component with TypeScript and Vite](https://blog.totominc.io/blog/create-a-vue-3-component-with-typescript)
 
