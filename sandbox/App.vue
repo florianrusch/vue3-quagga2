@@ -1,6 +1,6 @@
 <template>
   <main>
-    <vue-quagga></vue-quagga>
+    <vue-quagga style="width: 100vw; height: 100vh"></vue-quagga>
   </main>
 </template>
 
