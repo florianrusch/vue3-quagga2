@@ -7,14 +7,16 @@ import { resolve } from "node:path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    https: true,
+  },
   plugins: [
     mkcert({
-      savePath: "dev-assets/cert/",
-      hosts: ["localhost", "192.168.178.86"],
+      savePath: ".mkcert/",
       autoUpgrade: true,
     }),
-    Vue({ style: { filename: "style.css" } })],
-
+    Vue({ style: { filename: "style.css" } }),
+  ],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
