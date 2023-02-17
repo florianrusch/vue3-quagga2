@@ -1,5 +1,5 @@
 <template>
-  <div id="interactive" class="viewport">
+  <div ref="interactive" id="interactive" class="viewport">
     <video
       autoplay="true"
       preload="auto"
@@ -12,66 +12,66 @@
 
 <script setup lang="ts">
 import Quagga, {
+  type QuaggaJSCodeReader,
   type QuaggaJSConfigObject,
   type QuaggaJSResultObject,
 } from "@ericblade/quagga2";
 import { onMounted, onUnmounted, ref } from "vue";
 
-const width = 492;
-const height = 300;
+export interface Props {
+  debug?: boolean;
+  facingMode?: string;
+  patchSize?: string;
+  numOfWorkers?: number;
+  readers: string[];
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  debug: false,
+  facingMode: "environment",
+  patchSize: "medium",
+  numOfWorkers: 2,
+});
+
+const emit = defineEmits<{
+  (e: "barcode-detected", result: QuaggaJSResultObject): void;
+}>();
+
+const interactive = ref<null | HTMLDivElement>(null);
+
 const quaggaConfig = ref<QuaggaJSConfigObject>({
   inputStream: {
     type: "LiveStream",
-    constraints: {
-      width: { exact: width },
-      height: { exact: height },
-      facingMode: "environment",
-      aspectRatio: width / height,
-    },
     willReadFrequently: true,
   },
   locator: {
     halfSample: true,
-    patchSize: "medium",
+    patchSize: props.patchSize,
   },
   numOfWorkers: self.navigator.hardwareConcurrency,
   decoder: {
-    readers: [
-      "code_128_reader",
-      "ean_reader",
-      "ean_8_reader",
-      "code_39_reader",
-      "codabar_reader",
-      "upc_reader",
-      "upc_e_reader",
-      // "i2of5_reader",
-      // "2of5_reader",
-      "code_93_reader",
-    ],
+    readers: props.readers as QuaggaJSCodeReader[],
     debug: {
-      drawBoundingBox: true,
-      showFrequency: true,
-      drawScanline: true,
-      showPattern: true,
+      drawBoundingBox: props.debug,
+      showFrequency: props.debug,
+      drawScanline: props.debug,
+      showPattern: props.debug,
     },
     multiple: false,
   },
   locate: true,
-  debug: true,
+  debug: props.debug,
 });
 
 onMounted(() => {
-  initQuagga();
-});
+  quaggaConfig.value.inputStream!.constraints = {
+    height: interactive.value?.offsetWidth,
+    width: interactive.value?.offsetHeight,
+    facingMode: props.facingMode,
+    aspectRatio:
+      interactive.value!.offsetWidth / interactive.value!.offsetHeight,
+  };
 
-onUnmounted(() => {
-  Quagga.offDetected(onDetected);
-  // Not sure where `this.offProcessed` comes from
-  // if (this.onProcessed) Quagga.offProcessed(this.offProcessed);
-  Quagga.stop();
-});
-
-const initQuagga = () => {
   Quagga.init(quaggaConfig.value, function (err) {
     if (err) {
       return console.error(err);
@@ -81,7 +81,12 @@ const initQuagga = () => {
 
   Quagga.onDetected(onDetected);
   Quagga.onProcessed(onProcessed);
-};
+});
+
+onUnmounted(() => {
+  Quagga.offDetected(onDetected);
+  Quagga.stop();
+});
 
 const onProcessed = (result: QuaggaJSResultObject) => {
   var drawingCtx = Quagga.canvas.ctx.overlay,
@@ -123,25 +128,26 @@ const onProcessed = (result: QuaggaJSResultObject) => {
   }
 };
 
-const onDetected = (data: QuaggaJSResultObject) => {
-  console.log("detected", data);
+const onDetected = (result: QuaggaJSResultObject) => {
+  if (props.debug) {
+    console.log("barcode-detected", result);
+  }
+  emit("barcode-detected", result);
 };
 </script>
 
 <style scoped>
 #interactive {
-  background: green;
-}
-
-.viewport {
-  width: 100%;
-  height: 100%;
   position: relative;
+  text-align: center;
 }
 
-.viewport canvas.drawingBuffer {
+#interactive canvas.drawingBuffer {
   position: absolute;
   left: 0;
   top: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
 }
 </style>
