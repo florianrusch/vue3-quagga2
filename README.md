@@ -58,4 +58,4 @@ General project setup:
 
 ## License
 
-The project is licensed under the ["The Unlicense"](./LICENSE).
+The project is licensed under the ["The Unlicense"](./LICENSE) license.
