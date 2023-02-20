@@ -8,18 +8,18 @@ In the following we try to provide some help and guidance on how to participate,
 
 - [1. Raising an issue or feature request](#1-raising-an-issue-or-feature-request)
 - [2. Project Setup \& Development](#2-project-setup--development)
-	- [2.1 Recommended IDE Setup](#21-recommended-ide-setup)
-		- [2.1.1 Type Support for `.vue` Imports in TypeScript](#211-type-support-for-vue-imports-in-typescript)
-	- [2.2 Daily-used commands](#22-daily-used-commands)
-		- [2.2.1 Installing all dependencies](#221-installing-all-dependencies)
-		- [2.2.2 Compile and Hot-Reload for Development](#222-compile-and-hot-reload-for-development)
-		- [2.2.3 Lint with ESLint](#223-lint-with-eslint)
-		- [2.2.4 Type-Check, Compile and Minify for Production](#224-type-check-compile-and-minify-for-production)
-	- [2.3 Usage of mkcert](#23-usage-of-mkcert)
-	- [2.4 Sandbox environment](#24-sandbox-environment)
-	- [2.5 Git workflow](#25-git-workflow)
-		- [2.5.1 Releases \& Versioning](#251-releases--versioning)
-		- [2.5.2 Patching older Release](#252-patching-older-release)
+  - [2.1 Recommended IDE Setup](#21-recommended-ide-setup)
+    - [2.1.1 Type Support for `.vue` Imports in TypeScript](#211-type-support-for-vue-imports-in-typescript)
+  - [2.2 Daily-used commands](#22-daily-used-commands)
+    - [2.2.1 Installing all dependencies](#221-installing-all-dependencies)
+    - [2.2.2 Compile and Hot-Reload for Development](#222-compile-and-hot-reload-for-development)
+    - [2.2.3 Lint with ESLint](#223-lint-with-eslint)
+    - [2.2.4 Type-Check, Compile and Minify for Production](#224-type-check-compile-and-minify-for-production)
+  - [2.3 Usage of mkcert](#23-usage-of-mkcert)
+  - [2.4 Sandbox environment](#24-sandbox-environment)
+  - [2.5 Git workflow](#25-git-workflow)
+    - [2.5.1 Releases \& Versioning](#251-releases--versioning)
+    - [2.5.2 Patching older Release](#252-patching-older-release)
 
 ## 1. Raising an issue or feature request
 
@@ -50,7 +50,7 @@ npm install
 #### 2.2.2 Compile and Hot-Reload for Development
 
 > Please be aware that some browser allow access to the cameras only if the website uses http**s**.
-> Therefor we are using [mkcert](https://github.com/FiloSottile/mkcert). See [this chapter](#usage-of-mkcert) for more details.
+> Therefor we are using [mkcert](https://github.com/FiloSottile/mkcert). See [this chapter](#23-usage-of-mkcert) for more details.
 
 ```sh
 npm run dev
@@ -95,10 +95,10 @@ The development is orientated on GitHub flow. Therefor every Sourcecode contribu
 Release will be made by tagging a specific commit on the `main` branch. For the versioning we are using the [Semantic Versioning schema](https://semver.org/):
 
 > Given a version number MAJOR.MINOR.PATCH, increment the:
+>
 > 1. MAJOR version when you make incompatible API changes
 > 2. MINOR version when you add functionality in a backwards compatible manner
 > 3. PATCH version when you make backwards compatible bug fixes
-> Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
 #### 2.5.2 Patching older Release
 
@@ -106,20 +106,20 @@ Sometimes it's happening that a security issues appears in an older Release. The
 
 1. Identify the commit hash for the release you want to patch:
 
-	```shell
-	git log --tags --simplify-by-decoration --pretty="format:%ci %d" | grep "tag: v1.3.0" | head -1
-	```
+   ```shell
+   git log --tags --simplify-by-decoration --pretty="format:%ci %d" | grep "tag: v1.3.0" | head -1
+   ```
 
-	This command will output the commit hash for the release tag v1.3.0. Replace v1.3.0 with the actual tag name for the release you want to patch.
+   This command will output the commit hash for the release tag v1.3.0. Replace v1.3.0 with the actual tag name for the release you want to patch.
 
 2. Create a new branch from the commit hash: `git checkout -b patch-v1.3 <commit hash>`
 3. Make the necessary changes to the code to fix the issue.
 4. Commit the changes: `git commit -m "Fix issue in release 1.3.0"`
 5. Push the changes to the patch branch: `git push origin patch-v1.3`
 6. Create a new release from the patch branch:
-	- On the GitHub web interface, go to the repository's Releases tab.
-	- Click on the "Draft a new release" button.
-	- In the "Tag version" field, enter a new version number for the patch release (e.g., v1.3.1).
-	- In the "Target" field, select the patch branch you just created.
-	- Fill in any additional release information, such as a release title and description.
-	- Click on the "Publish release" button to create the new release.
+   - On the GitHub web interface, go to the repository's Releases tab.
+   - Click on the "Draft a new release" button.
+   - In the "Tag version" field, enter a new version number for the patch release (e.g., v1.3.1).
+   - In the "Target" field, select the patch branch you just created.
+   - Fill in any additional release information, such as a release title and description.
+   - Click on the "Publish release" button to create the new release.

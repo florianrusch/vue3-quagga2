@@ -26,14 +26,12 @@ Include it into your application:
 
 ```vue
 <template>
-    <vue-quagga
-      :readers="readers"
-    ></vue-quagga>
+  <vue-quagga :readers="readers"></vue-quagga>
 </template>
 
 <script setup>
 import { VueQuagga } from "vue3-quagga2";
-const readers = [ "code_128_reader" ];
+const readers = ["code_128_reader"];
 </script>
 ```
 
