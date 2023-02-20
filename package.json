@@ -1,6 +1,6 @@
 {
   "name": "vue3-quagga2",
-  "description": "ericblade/quagga2's wrapper for Vue 3",
+  "description": "Vue 3 wrapper for ericblade/quagga2",
   "version": "0.1.0",
   "homepage": "https://github.com/florianrusch/vue3-quagga2",
   "bugs": "https://github.com/florianrusch/vue3-quagga2/issues",
