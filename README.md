@@ -47,8 +47,8 @@ To have some contribution guidance, please have a look at [CONTRIBUTING.md](CONT
 
 quagga2/quaggaJS related projects:
 
-- [quagga2](https://github.com/ericblade/quagga2) (active fork of quaggaJS)
-- [quaggaJS](https://github.com/serratus/quaggaJS) (seems to be no longer maintained)
+- [ericblade/quagga2](https://github.com/ericblade/quagga2) (active fork of quaggaJS)
+- [serratus/quaggaJS](https://github.com/serratus/quaggaJS) (seems to be no longer maintained)
 - [sin-tanaka/vue-quagga](https://github.com/sin-tanaka/vue-quagga)
 - <https://codesandbox.io/s/hidden-star-361gx>
 
