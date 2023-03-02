@@ -65,7 +65,11 @@ npm run dev-network
 #### 2.2.3 Lint with [ESLint](https://eslint.org/)
 
 ```sh
+# Shows errors
 npm run lint
+
+# Fixes errors
+npm run lint:fix
 ```
 
 #### 2.2.4 Type-Check, Compile and Minify for Production

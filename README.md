@@ -26,7 +26,7 @@ Include it into your application:
 
 ```vue
 <template>
-  <vue-quagga :readers="readers"></vue-quagga>
+	<vue-quagga :readers="readers"></vue-quagga>
 </template>
 
 <script setup>
@@ -51,10 +51,6 @@ quagga2/quaggaJS related projects:
 - [serratus/quaggaJS](https://github.com/serratus/quaggaJS) (seems to be no longer maintained)
 - [sin-tanaka/vue-quagga](https://github.com/sin-tanaka/vue-quagga)
 - <https://codesandbox.io/s/hidden-star-361gx>
-
-General project setup:
-
-- [Create a Vue 3 component with TypeScript and Vite](https://blog.totominc.io/blog/create-a-vue-3-component-with-typescript)
 
 ## License
 
