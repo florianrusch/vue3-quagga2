@@ -1,4 +1,4 @@
-> # ⚠️ This project is still unter the initial development and was not released so far!
+> # ⚠️ This project is still in the early stages of development and has not yet been released!
 
 # vue3-quagga2 - A barcode scanner component for Vue3
 
