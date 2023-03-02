@@ -9,6 +9,14 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57 # v2.2.0
+        with:
+          egress-policy: audit
+          disable-telemetry: true
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -24,6 +32,14 @@ jobs:
         node-version: [16.x, 18.x, 19.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57 # v2.2.0
+        with:
+          egress-policy: audit
+          disable-telemetry: true
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
