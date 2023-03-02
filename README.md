@@ -1,3 +1,5 @@
+> # ⚠️ This project is still unter the initial development and was not released so far!
+
 # vue3-quagga2 - A barcode scanner component for Vue3
 
 > Vue3 wrapper for [ericblade/quagga2](https://github.com/ericblade/quagga2)
