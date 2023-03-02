@@ -3,7 +3,7 @@
 test:
     - src/**/*.spec.js
 
-CI:
+ci:
     - .github/
 
 documentation:
