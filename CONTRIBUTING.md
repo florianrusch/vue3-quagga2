@@ -2,7 +2,7 @@
 
 Everyone is more than welcome to contribute to this project! That's what open source is all about!
 
-In the following we try to provide some help and guidance on how to participate, contribute and develop on the project.
+In the following, we try to provide some help and guidance on how to participate, contribute and develop on the project.
 
 **Table of content:**
 
@@ -19,17 +19,17 @@ In the following we try to provide some help and guidance on how to participate,
   - [2.4 Sandbox environment](#24-sandbox-environment)
   - [2.5 Git workflow](#25-git-workflow)
     - [2.5.1 Releases \& Versioning](#251-releases--versioning)
-    - [2.5.2 Patching older Release](#252-patching-older-release)
+    - [2.5.2 ⚠️ Patching of older release](#252-️-patching-of-older-release)
 
 ## 1. Raising an issue or feature request
 
-The easiest way to contribute to the project is to simply use it!
+The simplest way to contribute to the project is to use it!
 
-If you find any issues or missing features while using the project, feel free to create a [GitHub Issue](https://github.com/florianrusch/vue3-quagga2/issues) in this project and describe what you found or what you need. To help you with this as well, we provide several templates to help and guide you through the issue creation.
+Whenever you encounter any issues or missing features while using the project, please create a [GitHub Issue](https://github.com/florianrusch/vue3-quagga2/issues) in this project and describe what you found or what you need. To help you with this, we provide several templates to help and guide you through the issue creation.
 
 ## 2. Project Setup & Development
 
-If you like to get your hands dirty, the following subsections provide some information and instructions for the general setup of your local development environment.
+If you are interested in getting your hands dirty, the following subsections provide information and instructions for the setup of your local development environment.
 
 ### 2.1 Recommended IDE Setup
 
@@ -37,7 +37,7 @@ If you like to get your hands dirty, the following subsections provide some info
 
 #### 2.1.1 Type Support for `.vue` Imports in TypeScript
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replaced the `tsc` CLI with `vue-tsc` for type checking. In editors, e.g. for VisualStudio Code we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+TypeScript cannot handle type information for `.vue` imports by default, so we replaced the `tsc` CLI with `vue-tsc` for type checking. In editors, e.g. for [VSCode](https://code.visualstudio.com/) we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
 ### 2.2 Daily-used commands
 
@@ -80,11 +80,11 @@ npm run build
 
 ### 2.3 Usage of mkcert
 
-As some browser only allow the camera access on websites which were transfererd via http**s** we need for development purposes also http**s**. To make it very simply for the developer we are using [mkcert](https://github.com/FiloSottile/mkcert) which was made to use one local Certificate Authority (CA) for all local development projects.
+As some browsers only allow camera access on websites that were transferred via HTTP**S** we need for development purposes also HTTP**S**. To make it simple for the developer, we are using [mkcert](https://github.com/FiloSottile/mkcert) which was made to use one local Certificate Authority (CA) for all local development projects.
 
-As we are using vite for hosting our local development server we are also using the [vite-plugin-mkcert](https://github.com/liuweiGL/vite-plugin-mkcert) to configure and setup mkcert.
+As we are using vite for hosting our local development server, we are also using the [vite-plugin-mkcert](https://github.com/liuweiGL/vite-plugin-mkcert) to configure and set up mkcert.
 
-As the project is mostly focusing on mobile application we would also need to allow/accept the local self-signed certificates on our mobile devices. The vite-plugin we are using provides a good guide how to do this: <https://github.com/liuweiGL/vite-plugin-mkcert#mobile-devices>
+As the project is mostly focusing on mobile applications, we would also need to allow/accept the local self-signed certificates on our mobile devices. The vite-plugin we are using provides a good guide on how to do this: <https://github.com/liuweiGL/vite-plugin-mkcert#mobile-devices>
 
 ### 2.4 Sandbox environment
 
@@ -92,11 +92,11 @@ A sandbox environment has been set up for development purposes. You can find it 
 
 ### 2.5 Git workflow
 
-The development is orientated on GitHub flow. Therefor every Sourcecode contribution needs to be provided through a [GitHub Pull-Request](https://github.com/florianrusch/vue3-quagga2/pulls).
+The development is orientated on GitHub flow. Therefore every source code contribution needs to be provided through a [GitHub Pull-Request](https://github.com/florianrusch/vue3-quagga2/pulls).
 
 #### 2.5.1 Releases & Versioning
 
-Release will be made by tagging a specific commit on the `main` branch. For the versioning we are using the [Semantic Versioning schema](https://semver.org/):
+Releases will be made by tagging a specific commit on the `main` branch. For the versioning we are using the [Semantic Versioning schema](https://semver.org/):
 
 > Given a version number MAJOR.MINOR.PATCH, increment the:
 >
@@ -104,26 +104,6 @@ Release will be made by tagging a specific commit on the `main` branch. For the 
 > 2. MINOR version when you add functionality in a backwards compatible manner
 > 3. PATCH version when you make backwards compatible bug fixes
 
-#### 2.5.2 Patching older Release
+#### 2.5.2 ⚠️ Patching of older release
 
-Sometimes it's happening that a security issues appears in an older Release. The plan for fixing such kind of issues would look like following:
-
-1. Identify the commit hash for the release you want to patch:
-
-   ```shell
-   git log --tags --simplify-by-decoration --pretty="format:%ci %d" | grep "tag: v1.3.0" | head -1
-   ```
-
-   This command will output the commit hash for the release tag v1.3.0. Replace v1.3.0 with the actual tag name for the release you want to patch.
-
-2. Create a new branch from the commit hash: `git checkout -b patch-v1.3 <commit hash>`
-3. Make the necessary changes to the code to fix the issue.
-4. Commit the changes: `git commit -m "Fix issue in release 1.3.0"`
-5. Push the changes to the patch branch: `git push origin patch-v1.3`
-6. Create a new release from the patch branch:
-   - On the GitHub web interface, go to the repository's Releases tab.
-   - Click on the "Draft a new release" button.
-   - In the "Tag version" field, enter a new version number for the patch release (e.g., v1.3.1).
-   - In the "Target" field, select the patch branch you just created.
-   - Fill in any additional release information, such as a release title and description.
-   - Click on the "Publish release" button to create the new release.
+Sometimes it's happening that security issues appear in older releases. Regarding the fact that the community behind this project is not very large, we are not able to provide patches for each release we have ever published. Therefore, we will only maintain the latest minor version with security patches and bug fixes!
