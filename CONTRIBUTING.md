@@ -19,7 +19,7 @@ In the following, we try to provide some help and guidance on how to participate
   - [2.4 Sandbox environment](#24-sandbox-environment)
   - [2.5 Git workflow](#25-git-workflow)
     - [2.5.1 Releases \& Versioning](#251-releases--versioning)
-    - [2.5.2 ⚠️ Patching of older release](#252-️-patching-of-older-release)
+    - [2.5.2 Patching of older release](#252-patching-of-older-release)
 
 ## 1. Raising an issue or feature request
 
@@ -104,6 +104,6 @@ Releases will be made by tagging a specific commit on the `main` branch. For the
 > 2. MINOR version when you add functionality in a backwards compatible manner
 > 3. PATCH version when you make backwards compatible bug fixes
 
-#### 2.5.2 ⚠️ Patching of older release
+#### 2.5.2 Patching of older release
 
 Sometimes it's happening that security issues appear in older releases. Regarding the fact that the community behind this project is not very large, we are not able to provide patches for each release we have ever published. Therefore, we will only maintain the latest minor version with security patches and bug fixes!
