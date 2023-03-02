@@ -50,7 +50,7 @@
 	"module": "dist/vue3-quagga2.es.js",
 	"types": "dist/types/index.d.ts",
 	"dependencies": {
-		"@ericblade/quagga2": "1.8.1",
+		"@ericblade/quagga2": "1.8.2",
 		"webrtc-adapter": "8.2.1"
 	}
 }
