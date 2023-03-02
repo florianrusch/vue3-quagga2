@@ -13,11 +13,12 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57 # v2.2.0
         with:
-          egress-policy: audit
+          disable-sudo: true
           disable-telemetry: true
+          egress-policy: audit
           allowed-endpoints: >
-            api.github.com:443
             github.com:443
+            api.github.com:443
       - uses: actions/labeler@v4
         with:
           dot: true
