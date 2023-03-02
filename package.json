@@ -17,11 +17,12 @@
 		"build:components": "vite build",
 		"build:types": "vue-tsc --project tsconfig.build-types.json --declaration --emitDeclarationOnly --outDir dist/types ",
 		"typecheck": "vue-tsc --project tsconfig.build-types.json --noEmit",
-		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
+		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif",
 		"lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore --fix"
 	},
 	"devDependencies": {
 		"@babel/types": "^7.21.2",
+		"@microsoft/eslint-formatter-sarif": "^2.1.7",
 		"@rushstack/eslint-patch": "^1.2.0",
 		"@types/node": "^18.14.3",
 		"@vitejs/plugin-vue": "^4.0.0",
