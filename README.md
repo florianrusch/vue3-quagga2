@@ -52,10 +52,6 @@ quagga2/quaggaJS related projects:
 - [sin-tanaka/vue-quagga](https://github.com/sin-tanaka/vue-quagga)
 - <https://codesandbox.io/s/hidden-star-361gx>
 
-General project setup:
-
-- [Create a Vue 3 component with TypeScript and Vite](https://blog.totominc.io/blog/create-a-vue-3-component-with-typescript)
-
 ## License
 
 The project is licensed under the ["The Unlicense"](./LICENSE) license.
