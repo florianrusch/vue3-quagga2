@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import Quagga, {
-	type QuaggaJSCodeReader,
 	type QuaggaJSConfigObject,
 	type QuaggaJSResultObject,
 } from "@ericblade/quagga2";
@@ -50,7 +49,7 @@ const quaggaConfig = ref<QuaggaJSConfigObject>({
 	},
 	numOfWorkers: self.navigator.hardwareConcurrency,
 	decoder: {
-		readers: props.readers as QuaggaJSCodeReader[],
+		readers: props.readers,
 		debug: {
 			drawBoundingBox: props.debug,
 			showFrequency: props.debug,
