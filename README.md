@@ -26,7 +26,7 @@ Include it into your application:
 
 ```vue
 <template>
-  <vue-quagga :readers="readers"></vue-quagga>
+	<vue-quagga :readers="readers"></vue-quagga>
 </template>
 
 <script setup>
