@@ -24,6 +24,13 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
+      - uses: gaurav-nelson/github-action-markdown-link-check@d53a906aa6b22b8979d33bc86170567e619495ec # v1.0.15
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'yes'
+          check-modified-files-only: 'yes'
+          base-branch: main
+
 
   build:
     runs-on: ubuntu-latest
