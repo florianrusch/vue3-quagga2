@@ -5,12 +5,15 @@ on:
     branches:
       - main
 
+permissions:  # added using https://github.com/step-security/secure-repo
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      security-events: write
+      contents: read  # for actions/checkout to fetch code
+      security-events: write  # for github/codeql-action/upload-sarif to upload SARIF results
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57 # v2.2.0
@@ -22,20 +25,20 @@ jobs:
             api.github.com:443
             github.com:443
             registry.npmjs.org:443
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
         with:
           node-version: 18
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@32dc499307d133bb5085bae78498c0ac2cf762d5 # v2.2.5
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v2
+        uses: actions/dependency-review-action@0efb1d1d84fc9633afcdaad14c485cbbc90ef46c # v2.5.1
 
 
   build:
@@ -56,8 +59,8 @@ jobs:
             github.com:443
             nodejs.org:443
             registry.npmjs.org:443
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci

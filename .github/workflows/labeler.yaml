@@ -2,13 +2,15 @@ name: Labeler
 
 on: [pull_request_target]
 
+permissions:  # added using https://github.com/step-security/secure-repo
+  contents: read
+
 jobs:
   label:
-    runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pull-requests: write
-
+      contents: read  # for actions/labeler to determine modified files
+      pull-requests: write  # for actions/labeler to add labels to PRs
+    runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57 # v2.2.0
@@ -19,7 +21,7 @@ jobs:
           allowed-endpoints: >
             github.com:443
             api.github.com:443
-      - uses: actions/labeler@v4
+      - uses: actions/labeler@ba790c862c380240c6d5e7427be5ace9a05c754b # v4.0.3
         with:
           dot: true
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
