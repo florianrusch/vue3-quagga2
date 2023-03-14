@@ -1,9 +1,10 @@
-name: CI
+name: Lint, Test & Build
 
 on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:  # added using https://github.com/step-security/secure-repo
   contents: read
