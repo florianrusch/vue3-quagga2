@@ -41,7 +41,7 @@ jobs:
             github.com:443
 
       - name: Checkout repository
-        uses: actions/checkout@dc323e67f16fb5f7663d20ff7941f27f5809e9b6 # v2.6.0
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v2.6.0
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
