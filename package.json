@@ -24,7 +24,7 @@
 		"@babel/types": "^7.21.2",
 		"@microsoft/eslint-formatter-sarif": "^2.1.7",
 		"@rushstack/eslint-patch": "^1.2.0",
-		"@types/node": "^18.14.3",
+		"@types/node": "^18.15.11",
 		"@vitejs/plugin-vue": "^4.0.0",
 		"@vue/eslint-config-prettier": "^7.1.0",
 		"@vue/eslint-config-typescript": "^11.0.2",
