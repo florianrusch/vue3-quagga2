@@ -52,6 +52,6 @@
 	"types": "dist/types/index.d.ts",
 	"dependencies": {
 		"@ericblade/quagga2": "1.8.1",
-		"webrtc-adapter": "8.2.1"
+		"webrtc-adapter": "8.2.2"
 	}
 }
