@@ -15,6 +15,7 @@ jobs:
     permissions:
       contents: read  # for actions/checkout to fetch code
       security-events: write  # for github/codeql-action/upload-sarif to upload SARIF results
+      pull-requests: write # for actions/dependency-review-action to add a summary comment to PR
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@6b3083af2869dc3314a0257a42f4af696cc79ba3 # v2.3.1
@@ -40,7 +41,9 @@ jobs:
           wait-for-processing: true
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@f46c48ed6d4f1227fb2d9ea62bf6bcbed315589e # v3.0.4
-
+        with:
+          comment-summary-in-pr: true
+          
 
   build:
     runs-on: ubuntu-latest
