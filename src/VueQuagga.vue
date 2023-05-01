@@ -151,6 +151,9 @@ const onDetected = (result: QuaggaJSResultObject) => {
 	text-align: center;
 }
 
+#interactive video {
+	margin: 0 auto;
+}
 #interactive canvas.drawingBuffer {
 	position: absolute;
 	left: 0;
