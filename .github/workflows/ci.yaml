@@ -39,7 +39,7 @@ jobs:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@0efb1d1d84fc9633afcdaad14c485cbbc90ef46c # v2.5.1
+        uses: actions/dependency-review-action@f46c48ed6d4f1227fb2d9ea62bf6bcbed315589e # v3.0.4
 
 
   build:
