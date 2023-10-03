@@ -19,6 +19,7 @@ jobs:
         with:
           allowed-endpoints: >
             api.github.com:443
+            github.com:443
           disable-sudo: true
           disable-telemetry: false
           egress-policy: audit
