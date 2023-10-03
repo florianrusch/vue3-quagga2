@@ -1,6 +1,8 @@
 name: Labeler
 
-on: [pull_request_target]
+on:
+  - pull_request_target
+  - workflow_dispatch
 
 permissions:  # added using https://github.com/step-security/secure-repo
   contents: read
@@ -17,9 +19,10 @@ jobs:
         with:
           allowed-endpoints: >
             api.github.com:443
+            github.com:443
           disable-sudo: true
-          disable-telemetry: true
-          egress-policy: block
+          disable-telemetry: false
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
 
