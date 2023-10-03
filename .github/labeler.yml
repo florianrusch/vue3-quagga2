@@ -1,13 +1,13 @@
 # Documentation: https://github.com/actions/labeler
 
 test:
-    - src/**/*.spec.js
+  - src/**/*.spec.js
 
 ci:
-    - .github/
+  - .github/*
 
 documentation:
-    - any: ["**/*.md"]
+  - any: ["**/*.md"]
 
 sandbox:
-    - sandbox/
+  - sandbox/*
