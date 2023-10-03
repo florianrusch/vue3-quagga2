@@ -15,6 +15,7 @@ jobs:
   release:
     permissions:
       contents: write # for softprops/action-gh-release to create the release
+      id-token: write # for npm publish with --provenance
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
@@ -61,6 +62,6 @@ jobs:
           fail_on_unmatched_files: true
 
       - name: Publish to npm
-        run: npm publish
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
