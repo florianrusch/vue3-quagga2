@@ -10,4 +10,4 @@ documentation:
   - "**/*.md"
 
 sandbox:
-  - sandbox/
+  - sandbox/**
