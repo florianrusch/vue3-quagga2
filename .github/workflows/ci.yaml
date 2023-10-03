@@ -26,11 +26,13 @@ jobs:
           allowed-endpoints: >
             api.github.com:443
             github.com:443
+            nodejs.org:443
             registry.npmjs.org:443
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+      - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
-          node-version: 18
+          node-version: "*" # will get the latest [locally-cached Node.js version](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md#nodejs), or the latest version from actions/node-versions
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -38,7 +40,6 @@ jobs:
         run: npm run typecheck
       - name: Run linter
         run: npm run lint
-      # - run: npm test
 
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
@@ -50,32 +51,5 @@ jobs:
         with:
           comment-summary-in-pr: true
 
-
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x, 19.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
-        with:
-          disable-sudo: true
-          disable-telemetry: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            github.com:443
-            nodejs.org:443
-            registry.npmjs.org:443
-
-      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: npm ci
-      - name: Build project
+      - name: Run build
         run: npm run build
