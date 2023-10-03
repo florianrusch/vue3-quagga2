@@ -41,7 +41,7 @@ jobs:
       # - run: npm test
 
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@29b1f65c5e92e24fe6b6647da1eaabe529cec70f # v2.3.3
+        uses: github/codeql-action/upload-sarif@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
