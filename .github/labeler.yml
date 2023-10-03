@@ -4,10 +4,10 @@ test:
   - src/**/*.spec.js
 
 ci:
-  - .github/
+  - .github/*
 
 documentation:
   - any: ["**/*.md"]
 
 sandbox:
-  - sandbox/
+  - sandbox/*
