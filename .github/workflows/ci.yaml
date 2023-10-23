@@ -29,7 +29,7 @@ jobs:
             nodejs.org:443
             registry.npmjs.org:443
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-      - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
+      - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           node-version: "*" # will get the latest [locally-cached Node.js version](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md#nodejs), or the latest version from actions/node-versions
           cache: 'npm'
