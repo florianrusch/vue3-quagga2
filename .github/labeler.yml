@@ -1,13 +1,17 @@
 # Documentation: https://github.com/actions/labeler
 
 test:
-  - src/**/*.spec.js
+  - changed-files:
+    - any-glob-to-any-file: src/**/*.spec.js
 
 ci:
-  - .github/**
+  - changed-files:
+    - any-glob-to-any-file: .github/**
 
 documentation:
-  - "**/*.md"
+  - changed-files:
+    - any-glob-to-any-file: "**/*.md"
 
 sandbox:
-  - sandbox/**
+  - changed-files:
+    - any-glob-to-any-file: sandbox/**
