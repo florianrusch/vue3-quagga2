@@ -97,7 +97,7 @@ const onProcessed = (result: QuaggaJSResultObject) => {
 				0,
 				0,
 				parseInt(drawingCanvas.getAttribute("width") || "0"),
-				parseInt(drawingCanvas.getAttribute("height") || "0")
+				parseInt(drawingCanvas.getAttribute("height") || "0"),
 			);
 			result.boxes
 				.filter(function (box) {
@@ -111,7 +111,7 @@ const onProcessed = (result: QuaggaJSResultObject) => {
 						{
 							color: "green",
 							lineWidth: 2,
-						}
+						},
 					);
 				});
 		}
@@ -131,7 +131,7 @@ const onProcessed = (result: QuaggaJSResultObject) => {
 				{
 					color: "red",
 					lineWidth: 3,
-				}
+				},
 			);
 		}
 	}
