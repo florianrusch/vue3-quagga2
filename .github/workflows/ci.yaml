@@ -28,7 +28,7 @@ jobs:
             github.com:443
             nodejs.org:443
             registry.npmjs.org:443
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
           node-version: "*" # will get the latest [locally-cached Node.js version](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md#nodejs), or the latest version from actions/node-versions
@@ -39,17 +39,45 @@ jobs:
       - name: Run typecheck
         run: npm run typecheck
       - name: Run linter
-        run: npm run lint
+        run: npm run lint:sarif
 
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@b7cec7526559c32f1616476ff32d17ba4c59b2d6 # v3.25.5
+        uses: github/codeql-action/upload-sarif@9fdb3e49720b44c48891d036bb502feb25684276 # v3.25.6
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
+        if: always()
+
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@4901385134134e04cec5fbe5ddfe3b2c5bd5d976 # v4.0.0
+        uses: actions/dependency-review-action@0c155c5e8556a497adf53f2c18edabf945ed8e70 # v4.3.2
         with:
           comment-summary-in-pr: true
+        if: contains(fromJSON('["pull_request", "pull_request_target"]'), github.event.action) && always()
+
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # for actions/checkout to fetch code
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@a4aa98b93cab29d9b1101a6143fb8bce00e2eac4 # v2.7.1
+        with:
+          disable-sudo: true
+          disable-telemetry: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            nodejs.org:443
+            registry.npmjs.org:443
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: "*" # will get the latest [locally-cached Node.js version](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md#nodejs), or the latest version from actions/node-versions
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run build
         run: npm run build
