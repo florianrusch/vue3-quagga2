@@ -23,7 +23,7 @@
 	},
 	"dependencies": {
 		"@ericblade/quagga2": "1.8.4",
-		"webrtc-adapter": "8.2.3"
+		"webrtc-adapter": "9.0.1"
 	},
 	"devDependencies": {
 		"@babel/types": "^7.23.0",
