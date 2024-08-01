@@ -49,7 +49,7 @@ jobs:
         if: always()
 
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@0c155c5e8556a497adf53f2c18edabf945ed8e70 # v4.3.2
+        uses: actions/dependency-review-action@5a2ce3f5b92ee19cbb1541a4984c76d921601d7c # v4.3.4
         with:
           comment-summary-in-pr: true
         if: contains(fromJSON('["pull_request", "pull_request_target"]'), github.event.action) && always()
