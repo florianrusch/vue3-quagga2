@@ -18,7 +18,7 @@ jobs:
       pull-requests: write # for actions/dependency-review-action to add a summary comment to PR
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
         with:
           disable-sudo: true
           disable-telemetry: true
@@ -29,7 +29,7 @@ jobs:
             nodejs.org:443
             registry.npmjs.org:443
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-      - uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4.0.4
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version: "*" # will get the latest [locally-cached Node.js version](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md#nodejs), or the latest version from actions/node-versions
           cache: 'npm'
@@ -42,7 +42,7 @@ jobs:
         run: npm run lint:sarif
 
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@294a9d92911152fe08befb9ec03e240add280cb3 # v3.26.8
+        uses: github/codeql-action/upload-sarif@b56ba49b26e50535fa1e7f7db0f4f7b4bf65d80d # v3.28.10
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
@@ -60,7 +60,7 @@ jobs:
       contents: read  # for actions/checkout to fetch code
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
         with:
           disable-sudo: true
           disable-telemetry: true
@@ -71,7 +71,7 @@ jobs:
             nodejs.org:443
             registry.npmjs.org:443
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-      - uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4.0.4
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version: "*" # will get the latest [locally-cached Node.js version](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md#nodejs), or the latest version from actions/node-versions
           cache: 'npm'
