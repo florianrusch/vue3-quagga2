@@ -22,7 +22,7 @@ jobs:
           disable-sudo: true
           disable-telemetry: true
           egress-policy: block
-      - uses: actions/first-interaction@34f15e814fe48ac9312ccf29db4e74fa767cbab7 # v1.3.0
+      - uses: actions/first-interaction@753c925c8d1ac6fede23781875376600628d9b5d # v3.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           issue-message: "Thanks for your contribution 🔥 We will take a look asap 🚀\n\nIn the meantime we recommend each new contribute to have a look at the [contribution guide](https://github.com/florianrusch/vue3-quagga2/CONTRIBUTING.md)."
